@@ -14,7 +14,7 @@ public class ProductPage extends BasePage {
     }
 
     private WebElement cartBtn() {
-        return driver.findElement(By.xpath("//div[@class='col-sm-12 col-md-6 col-lg-6']"));
+        return driver.findElement(By.linkText("Add to cart"));
     }
     public void clickOnCartBtn(){
         this.cartBtn().click();

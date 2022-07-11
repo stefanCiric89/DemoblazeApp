@@ -18,6 +18,18 @@ public class MainPage extends BasePage{
     public void openPage(){
         driver.get(this.url);
         driver.manage().window().maximize();
+        this.waitPageToBeDisplayed();
+       /* WebDriverWait wait = new WebDriverWait(driver, 500);
+        //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("card"), 1));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.id("tbodyid"),1));*/
+
+    }
+
+    public void waitPageToBeDisplayed(){
+        WebDriverWait wait = new WebDriverWait(driver, 500);
+        //wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.className("card"), 1));
+        wait.until(ExpectedConditions.numberOfElementsToBe(By.id("tbodyid"),1));
+
     }
 
     public  WebElement selectItemNokiaLumia1520(){
@@ -29,6 +41,14 @@ public class MainPage extends BasePage{
         /*WebDriverWait wait = new WebDriverWait(driver,60);
         wait.until(ExpectedConditions.elementToBeClickable(clickItem));*/
         clickItem.click();
+    }
+
+    private WebElement getItemByName(String name){
+        return driver.findElement(By.xpath("//a[text()= '" + name + "']"));
+    }
+
+    public void clickOnItemByName(String name){
+        this.getItemByName(name).click();
     }
 
 }
